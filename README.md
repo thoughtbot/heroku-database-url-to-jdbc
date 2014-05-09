@@ -4,13 +4,41 @@ Useful for connecting your JDBC-using, Heroku-deployed Clojure application to He
 
 ## Usage
 
-Generate a JDBC connection string from a Heroku DATABASE_URL
+You probably want to use this library like this:
 
-    (heroku-database-url->jdbc-connection-string heroku-database-url)
+  (defn jdbc-connection-string []
+    (if-let [database-url (System/getenv "DATABASE_URL")]
+      (heroku-database-url->jdbc-connection-string database-url)
+      (local-database-connection-string)))
 
-Generate a [Korma](http://sqlkorma.com) connection map from a Heroku DATABASE_URL
+Or, if you're using [Korma](http://sqlkorma.com):
 
-    (heroku-database-url->korma-connection-map heroku-database-url)
+  (defn db-spec []
+    (if-let [database-url (System/getenv "DATABASE_URL")]
+      (heroku-database-url->korma-connection-map database-url)
+      local-database-map))
+
+  (defdb db (db-spec))
+
+More concretely, this library consists of two public functions.
+
+To generate a JDBC connection string from a Heroku DATABASE_URL:
+```clj
+    (heroku-database-url->jdbc-connection-string database-url)
+
+    ; => "jdbc:postgresql://host:1234?user=username&password=password"
+```
+
+To generate a Korma connection map from a Heroku DATABASE_URL:
+```clj
+    (heroku-database-url->korma-connection-map database-url)
+
+    ; {:classname "org.postgresql.Driver"
+    ;  :subprotocol "postgresql"
+    ;  :user "user"
+    ;  :password "password"
+    ;  :subname //host:1234/path-to-db
+```
 
 ## License
 
