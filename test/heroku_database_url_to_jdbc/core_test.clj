@@ -2,6 +2,10 @@
   (:require [clojure.test :refer :all]
             [heroku-database-url-to-jdbc.core :refer :all]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(deftest test-heroku-database-parsing
+  (is (= {:classname "org.postgresql.Driver"
+          :subprotocol "postgresql"
+          :user "user"
+          :password "pass"
+          :subname "//host:1234/path"}
+         (heroku-database-url->jdbc-connection-map "postgres://user:pass@host:1234/path"))))
