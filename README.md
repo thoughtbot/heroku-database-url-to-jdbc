@@ -1,6 +1,6 @@
 # heroku-database-url-to-jdbc
 
-A Clojure library designed to ... well, that part is up to you.
+Useful for connecting your JDBC-using, Heroku-deployed Clojure application to Heroku's postgres service.
 
 ## Usage
 
