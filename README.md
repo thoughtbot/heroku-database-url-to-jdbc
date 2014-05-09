@@ -28,20 +28,24 @@ More concretely, this library consists of two public functions.
 
 To generate a JDBC connection string from a Heroku DATABASE_URL:
 ```clj
+    (def database-url "postgres://user:pass@ec2-host:1234/path-to-db")
+
     (heroku-database-url->jdbc-connection-string database-url)
 
-    ; => "jdbc:postgresql://host:1234?user=username&password=password"
+    ; => "jdbc:postgresql://ec2-host:1234?user=user&password=pass"
 ```
 
-To generate a Korma connection map from a Heroku DATABASE_URL:
+To generate a Korma-friendly connection map from a Heroku DATABASE_URL:
 ```clj
+    (def database-url "postgres://user:pass@ec2-host:1234/path-to-db")
+
     (heroku-database-url->korma-connection-map database-url)
 
     ; {:classname "org.postgresql.Driver"
     ;  :subprotocol "postgresql"
     ;  :user "user"
-    ;  :password "password"
-    ;  :subname //host:1234/path-to-db
+    ;  :password "pass"
+    ;  :subname "//host:1234/path-to-db"
 ```
 
 ## License
