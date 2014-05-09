@@ -37,7 +37,7 @@ To generate a [Korma](http://sqlkorma.com)-friendly connection map from a Heroku
 Add to your `project.clj`'s `:dependencies` section:
 
 ```clj
-[heroku-database-url-to-jdbc "0.2.0"]
+[heroku-database-url-to-jdbc "0.2.2"]
 ```
 
 ## License
