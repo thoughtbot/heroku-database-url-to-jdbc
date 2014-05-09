@@ -2,7 +2,7 @@
 
 (defn- create-uri [url] (java.net.URI. url))
 
-(defn- parse-user-and-password [db-uri]
+(defn- parse-username-and-password [db-uri]
   (clojure.string/split (.getUserInfo db-uri) #":"))
 
 (defn- subname [db-uri]
@@ -12,7 +12,7 @@
   "Converts Heroku's DATABASE_URL to a JDBC-friendly connection string"
   [heroku-database-url]
   (let [db-uri (create-uri heroku-database-url)
-        [username password] (parse-user-and-password db-uri)]
+        [username password] (parse-username-and-password db-uri)]
     (str "jdbc:postgresql://"
          (.getHost db-uri)
          ":"
@@ -26,7 +26,7 @@
   defdb fn"
   [heroku-database-url]
   (let [db-uri (create-uri heroku-database-url)
-        [user password] (parse-user-and-password db-uri)]
+        [user password] (parse-username-and-password db-uri)]
     {:classname "org.postgresql.Driver"
      :subprotocol "postgresql"
      :user user
