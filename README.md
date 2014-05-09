@@ -6,19 +6,23 @@ Useful for connecting your JDBC-using, Heroku-deployed Clojure application to He
 
 You probably want to use this library like this:
 
-  (defn jdbc-connection-string []
-    (if-let [database-url (System/getenv "DATABASE_URL")]
-      (heroku-database-url->jdbc-connection-string database-url)
-      (local-database-connection-string)))
+```clj
+(defn jdbc-connection-string []
+  (if-let [database-url (System/getenv "DATABASE_URL")]
+    (heroku-database-url->jdbc-connection-string database-url)
+    (local-database-connection-string)))
+```
 
 Or, if you're using [Korma](http://sqlkorma.com):
 
+```clj
   (defn db-spec []
     (if-let [database-url (System/getenv "DATABASE_URL")]
       (heroku-database-url->korma-connection-map database-url)
       local-database-map))
 
   (defdb db (db-spec))
+```
 
 More concretely, this library consists of two public functions.
 
