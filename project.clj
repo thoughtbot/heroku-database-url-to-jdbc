@@ -1,4 +1,4 @@
-(defproject heroku-database-url-to-jdbc "0.1.0-SNAPSHOT"
+(defproject heroku-database-url-to-jdbc "0.1.0"
   :description "Converts Heroku-style DATABASE_URLs to JDBC-friendly maps or strings"
   :url "https://github.com/thoughtbot/heroku-database-url-to-jdbc"
   :license {:name "Eclipse Public License"
