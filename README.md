@@ -7,7 +7,7 @@ Useful for connecting your JDBC-using, Heroku-deployed Clojure application to He
 To generate a JDBC connection string from a Heroku DATABASE_URL:
 ```clj
     (ns example
-      (:require [heroku-database-url-to-jdbc :as h]))
+      (:require [heroku-database-url-to-jdbc.core :as h]))
 
     (def database-url "postgres://user:pass@ec2-host:1234/path-to-db")
 
@@ -19,7 +19,7 @@ To generate a JDBC connection string from a Heroku DATABASE_URL:
 To generate a [Korma](http://sqlkorma.com)-friendly connection map from a Heroku DATABASE_URL:
 ```clj
     (ns example
-      (:require [heroku-database-url-to-jdbc :as h]))
+      (:require [heroku-database-url-to-jdbc.core :as h]))
 
     (def database-url "postgres://user:pass@ec2-host:1234/path-to-db")
 
