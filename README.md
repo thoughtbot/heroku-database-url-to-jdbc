@@ -13,7 +13,7 @@ To generate a JDBC connection string from a Heroku DATABASE_URL:
     ; => "jdbc:postgresql://ec2-host:1234?user=user&password=pass"
 ```
 
-To generate a Korma-friendly connection map from a Heroku DATABASE_URL:
+To generate a [Korma](http://sqlkorma.com)-friendly connection map from a Heroku DATABASE_URL:
 ```clj
     (def database-url "postgres://user:pass@ec2-host:1234/path-to-db")
 
