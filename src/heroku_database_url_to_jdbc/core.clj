@@ -23,9 +23,9 @@
   defdb fn"
   [heroku-database-url]
   (let [db-uri (create-uri heroku-database-url)
-        [user password] (parse-username-and-password db-uri)]
+        [username password] (parse-username-and-password db-uri)]
     {:classname "org.postgresql.Driver"
      :subprotocol "postgresql"
-     :user user
+     :user username
      :password password
      :subname (subname db-uri)}))
